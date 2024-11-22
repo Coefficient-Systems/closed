@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Logo from ".././public/assets/legacy.gif";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +40,57 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="bg-black h-20">
+          <Link href="/dashboard">
+            <Avatar>
+              <AvatarImage src={Logo.src} className="flex relative left-2" />
+              <AvatarFallback className="flex relative left-4 font-[BonaNovaBold] rounded-none w-max bg-black text-white">
+                LOADING...
+              </AvatarFallback>
+            </Avatar>
+          </Link>
+          <Menubar className="flex relative left-2 w-min ">
+            <MenubarMenu>
+              <MenubarTrigger>Navigate</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <Link href="/dashboard">Dashboard</Link>
+                  <MenubarShortcut>⌘D</MenubarShortcut>
+                </MenubarItem>
+                <MenubarItem>
+                  <Link href="/pipelines">Pipelines</Link>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>
+                  <Link href="/pipeline/deals">Deals</Link>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>Help</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Items</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>Grenade</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>RPG</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>Tank</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Actions</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>Attack</MenubarItem>
+                <MenubarItem>Flank</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>Defend</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>Surrender</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        </div>
         {children}
       </body>
     </html>
