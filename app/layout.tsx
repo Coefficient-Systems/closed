@@ -13,6 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from ".././public/assets/legacy.gif";
 import Link from "next/link";
+import { Label } from "@/components/ui/label";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -57,36 +58,44 @@ export default function RootLayout({
                   <Link href="/dashboard">Dashboard</Link>
                   <MenubarShortcut>⌘D</MenubarShortcut>
                 </MenubarItem>
+                <MenubarSeparator />
+                <Label className="text-gray-400">People</Label>
+                <MenubarItem>
+                  <Link href="/customers">Customers</Link>
+                </MenubarItem>
+                <MenubarItem>
+                  <Link href="">Team</Link>
+                </MenubarItem>
+                <MenubarItem>
+                  <Link href="">Profile</Link>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>
+                  <Link href="/settings">Settings</Link>
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>View</MenubarTrigger>
+              <MenubarContent>
                 <MenubarItem>
                   <Link href="/pipelines">Pipelines</Link>
                 </MenubarItem>
                 <MenubarSeparator />
                 <MenubarItem>
-                  <Link href="/pipeline/deals">Deals</Link>
+                  <Link href="/pipeline/id/deals">Deals</Link>
                 </MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem>Help</MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-            <MenubarMenu>
-              <MenubarTrigger>Items</MenubarTrigger>
-              <MenubarContent>
-                <MenubarItem>Grenade</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem>RPG</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem>Tank</MenubarItem>
               </MenubarContent>
             </MenubarMenu>
             <MenubarMenu>
               <MenubarTrigger>Actions</MenubarTrigger>
               <MenubarContent>
-                <MenubarItem>Attack</MenubarItem>
-                <MenubarItem>Flank</MenubarItem>
+                <MenubarItem>
+                  <Link href="/create">Create</Link>
+                </MenubarItem>
+                <MenubarItem>Contact</MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem>Defend</MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem>Surrender</MenubarItem>
+                <MenubarItem>Schedule</MenubarItem>
               </MenubarContent>
             </MenubarMenu>
           </Menubar>

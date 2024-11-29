@@ -89,3 +89,7 @@ body {
 input::placeholder {
   font-family: NovaBonaBold;
 }
+@font-face {
+  font-family: "CoopBl";
+  src: local(CoopBl), url("fonts/CooperBlack.TTF") format("truetype");
+}
