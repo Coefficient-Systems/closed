@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Logo from ".././public/assets/legacy.gif";
+import Link from "next/link";
+import { Label } from "@/components/ui/label";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +41,65 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="bg-black h-20">
+          <Link href="/dashboard">
+            <Avatar>
+              <AvatarImage src={Logo.src} className="flex relative left-2" />
+              <AvatarFallback className="flex relative left-4 font-[BonaNovaBold] rounded-none w-max bg-black text-white">
+                LOADING...
+              </AvatarFallback>
+            </Avatar>
+          </Link>
+          <Menubar className="flex relative left-2 w-min ">
+            <MenubarMenu>
+              <MenubarTrigger>Navigate</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <Link href="/dashboard">Dashboard</Link>
+                  <MenubarShortcut>⌘D</MenubarShortcut>
+                </MenubarItem>
+                <MenubarSeparator />
+                <Label className="text-gray-400">People</Label>
+                <MenubarItem>
+                  <Link href="/customers">Customers</Link>
+                </MenubarItem>
+                <MenubarItem>
+                  <Link href="">Team</Link>
+                </MenubarItem>
+                <MenubarItem>
+                  <Link href="">Profile</Link>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>
+                  <Link href="/settings">Settings</Link>
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>View</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <Link href="/pipelines">Pipelines</Link>
+                </MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>
+                  <Link href="/pipeline/id/deals">Deals</Link>
+                </MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+            <MenubarMenu>
+              <MenubarTrigger>Actions</MenubarTrigger>
+              <MenubarContent>
+                <MenubarItem>
+                  <Link href="/create">Create</Link>
+                </MenubarItem>
+                <MenubarItem>Contact</MenubarItem>
+                <MenubarSeparator />
+                <MenubarItem>Schedule</MenubarItem>
+              </MenubarContent>
+            </MenubarMenu>
+          </Menubar>
+        </div>
         {children}
       </body>
     </html>
